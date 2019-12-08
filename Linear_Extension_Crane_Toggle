@@ -1,0 +1,85 @@
+package Team_Final_EEEEE;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
+
+
+@TeleOp(name="FinalLinExtProgEEEE_v2")
+
+public class FinalLinExtProgEEEE_v2 extends LinearOpMode {
+    private Servo grip = null;
+    private Servo rotate = null;
+    private DcMotor linearslide = null;
+
+    @Override
+    public void runOpMode() {
+        telemetry.addData("Status", "Initialized");
+        telemetry.update();
+
+        linearslide = hardwareMap.get(DcMotor.class,"linearslide");
+        grip = hardwareMap.get(Servo.class,"grip");
+        rotate = hardwareMap.get(Servo.class,"rotate");
+        waitForStart();
+
+        while (opModeIsActive()) {
+            
+            double linear = gamepad2.left_stick_y;
+            linearslide.setPower(linear);
+
+           // boolean claw_open = gamepad2.a;
+            //boolean claw_close = gamepad2.y;
+            
+            //double spin_origin = gamepad2.x;
+            //double spin_extended = gamepad2.b;
+
+            boolean changed = false; //Outside of loop() 
+            //telemetry.addData("Servo Grip Postion", grip.getPosition());
+            //telemetry.update();
+            if(gamepad2.a && !changed) {
+                if(grip.getPosition() == 1) grip.setPosition(0.6);
+                else 
+                    grip.setPosition(1); changed = true; 
+                    } 
+                else if(!gamepad2.a) changed = false;
+                
+            
+            boolean changed2 = false; //Outside of loop() 
+            telemetry.addData("Servo Rotate Postion", rotate.getPosition());
+            telemetry.update();
+            if(gamepad2.y && !changed2) {
+                if(rotate.getPosition() == 0.1) rotate.setPosition(0.5);
+                else 
+                    rotate.setPosition(0.1); changed2 = true; 
+                    } 
+                else if(!gamepad2.y) changed2 = false;
+            
+       /*     boolean changed = false, on = false; //Outside of loop(
+            if(gamepad1.a && !changed) {
+                servo.setPosition(on ? 1 : 0);
+                on = !on;
+                changed = true;
+            } else if(!gamepad1.a) changed = false;
+*/
+            
+           
+ /*          if(claw = true){
+               grip.setPosition(0.2);
+               
+           }
+           if(claw = false){
+               grip.setPosition(0.9);
+               
+           }
+           if(spin > 0){
+                rotate.setPosition(spin);
+           }
+  */          
+            
+        }
+    }
+}
