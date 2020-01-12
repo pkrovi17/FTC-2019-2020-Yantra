@@ -1,2 +1,2 @@
 # FTC-2019-2020-Yantra
-FTC season 1 and these are all the code that is awesome. We also Have put a lot of useful things in here. Along with multiple FTC rookie team challenges Coding-wise
+This is our 2019-2020 season and we posted our code here. This awesome for rookie teams that started out just like us. We tackled all our main problems coding-wise."___"
